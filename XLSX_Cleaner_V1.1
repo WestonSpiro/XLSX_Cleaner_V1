@@ -1,0 +1,41 @@
+#!/usr/bin/env python3
+
+#XLSX Cleaner
+
+import pandas
+import re
+print("Welcome to the XLSX Cleaner!\n")
+print("File name must be 3 letters or more.\n")
+while True:
+    path = input("Enter file to clean: ")
+    df = pandas.read_excel(path)
+    df = df.replace('\"', '', regex=True)
+    for column in df.columns:
+        df[column] = df[column].astype(str).str.replace('!', "", regex = True)
+        df[column] = df[column].astype(str).str.replace('@', "", regex = True)
+        df[column] = df[column].astype(str).str.replace('#', "", regex = True)
+        df[column] = df[column].astype(str).str.replace('^', "", regex = True)
+        df[column] = df[column].astype(str).str.replace('&', "", regex = True)
+        df[column] = df[column].astype(str).str.replace('*', "", regex = True)
+        df[column] = df[column].astype(str).str.replace('(', "", regex = True)
+        df[column] = df[column].astype(str).str.replace(')', "", regex = True)
+        df[column] = df[column].astype(str).str.replace('_', "", regex = True)
+        df[column] = df[column].astype(str).str.replace('~', "", regex = True)
+        df[column] = df[column].astype(str).str.replace('`', "", regex = True)
+        df[column] = df[column].astype(str).str.replace('{', "", regex = True)
+        df[column] = df[column].astype(str).str.replace('}', "", regex = True)
+        df[column] = df[column].astype(str).str.replace('[', "", regex = True)
+        df[column] = df[column].astype(str).str.replace(']', "", regex = True)
+        df[column] = df[column].astype(str).str.replace('\\', "", regex = True)
+        df[column] = df[column].astype(str).str.replace('/', "", regex = True)
+        df[column] = df[column].astype(str).str.replace(',', "", regex = True)
+        df[column] = df[column].astype(str).str.replace('?', "", regex = True)
+        df[column] = df[column].astype(str).str.replace('<', "", regex = True)
+        df[column] = df[column].astype(str).str.replace('>', "", regex = True)
+        df[column] = df[column].astype(str).str.replace(';', "", regex = True)
+        df[column] = df[column].astype(str).str.replace(':', "", regex = True)
+        df[column] = df[column].astype(str).str.replace('|', "", regex = True)
+    for ind in df:
+        ind.replace("'", "")
+    df.to_excel(path[:3] + "_Cleaned.xlsx")
+    print("Thanks for using the XLSX_Cleaner!\n")
