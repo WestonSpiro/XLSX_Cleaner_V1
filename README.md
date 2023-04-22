@@ -15,6 +15,8 @@ A new csv file is created named the first three letters of the original file fol
 
 This program will remove any/all characters that are not used in financial transactions.
 
+Version 2 incorporates a GUI for easy file cleaning.
+
 Weston Spiro 2023
 
 All Rights Reserved
